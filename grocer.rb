@@ -104,5 +104,5 @@ def checkout(cart, coupons)
   cart = apply_coupons(cart, coupons)
   cart = apply_clearance(cart)
   total = total_cart(cart).round(2)
-  if total >= 100 ? total * 0.9 : total
+  total >= 100 ? total * 0.9 : total
 end
