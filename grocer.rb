@@ -73,7 +73,6 @@ def can_coupon_be_applied?(cart, coupon)
   index = 0
 
   while index < cart.length
-    puts "is #{index} < #{cart.length}"
     return true if (coupon[:item] == cart[index][:item] && cart[index][:count] >= coupon[:num])
     index += 1
   end
