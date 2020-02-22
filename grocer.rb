@@ -39,8 +39,6 @@ end
 
 def apply_coupons(cart, coupons)
   coupon_index = 0
-  index = 0
-
 
   while coupon_index < coupons.length
     #attempt to apply coupons[index]
@@ -50,6 +48,7 @@ def apply_coupons(cart, coupons)
               item_to_discount = coupons[coupon_index][:item]
               num_to_discount = coupons[coupon_index][:num]
 
+              index = 0
               while index < cart.length #find item in cart and decrement regular priced items
                             if cart[index][:item] == item_to_discount
                                       cart[index][:count] -= num_to_discount #decrement regular priced items
