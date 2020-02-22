@@ -45,27 +45,27 @@ def apply_coupons(cart, coupons)
   while coupon_index < coupons.length
     #attempt to apply coupons[index]
     if can_coupon_be_applied?(cart, coupons[coupon_index])
-      #apply coupon
-      #first, remove regular priced item count; also, when instance found, record clearance boolean
-      item_to_discount = coupons[coupon_index][:item]
-      num_to_discount = coupons[coupon_index][:num]
+              #apply coupon
+              #first, remove regular priced item count; also, when instance found, record clearance boolean
+              item_to_discount = coupons[coupon_index][:item]
+              num_to_discount = coupons[coupon_index][:num]
 
-      while index < cart.length #find item in cart and decrement regular priced items
-        if cart[index][:item] == item_to_discount
-          cart[index][:count] -= num_to_discount #decrement regular priced items
-          is_item_on_clearance = cart[index][:clearance]  #record clearance status to preserve in discounted item
-        end
-        index += 1
-      end
-      #add new, discounted item to cart
-      discounted_item_name = item_to_discount + " W/COUPON"
-      num_discounted_items = coupons[coupon_index][:num]
-      discounted_item_price = (coupons[coupon_index][:cost] / num_discounted_items)
+              while index < cart.length #find item in cart and decrement regular priced items
+                            if cart[index][:item] == item_to_discount
+                                      cart[index][:count] -= num_to_discount #decrement regular priced items
+                                      is_item_on_clearance = cart[index][:clearance]  #record clearance status to preserve in discounted item
+                            end
+                            index += 1
+              end
+              #add new, discounted item to cart
+              discounted_item_name = item_to_discount + " W/COUPON"
+              num_discounted_items = coupons[coupon_index][:num]
+              discounted_item_price = (coupons[coupon_index][:cost] / num_discounted_items)
 
-      newHash = {:item => discounted_item_name, :price => discounted_item_price, :clearance => is_item_on_clearance, :count => num_discounted_items}
-      cart << newHash
-      index = 0
-    coupon_index += 1
+              newHash = {:item => discounted_item_name, :price => discounted_item_price, :clearance => is_item_on_clearance, :count => num_discounted_items}
+              cart << newHash
+              index = 0
+              coupon_index += 1
     end
   end
   cart
