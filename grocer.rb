@@ -64,8 +64,8 @@ def apply_coupons(cart, coupons)
 
               newHash = {:item => discounted_item_name, :price => discounted_item_price, :clearance => is_item_on_clearance, :count => num_discounted_items}
               cart << newHash
-              index = 0
     end
+    index = 0
     coupon_index += 1
   end
   cart
